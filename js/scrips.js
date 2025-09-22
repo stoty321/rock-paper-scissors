@@ -97,10 +97,10 @@ function playGame(){
 function gameWinner(playerScore, compScore){
     
     if(playerScore > compScore){
-        console.log("Congratulations you Won the Game" + playerScore + "-" + compScore);
+        console.log("Congratulations. You Won the Game: " + playerScore + "-" + compScore);
     }
     else if(playerScore < compScore){
-        console.log("Better luck next time. The computer won");
+        console.log("Better luck next time. You lost the Game: " + playerScore + "-" + compScore);
     }else{
         console.log("So close. It's a Draw");
     }
