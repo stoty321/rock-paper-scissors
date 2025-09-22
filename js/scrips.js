@@ -56,14 +56,31 @@ function playRound(playerChoice, compChoice){
     
 }
 
-let playerScore = 0;
-let compScore = 0;
+function playGame(){
+    let playerScore = 0;
+    let compScore = 0;
+    let round = 0;
+
+    for (round; round <=5; round++){
+        
+        let playerWins = playRound(playerChoice, compChoice);
+        
+        if(playerWins == "true"){
+            playerScore += 1;
+        }else{
+            compScore += 1;
+        }
+        
+        console.log("Round: " + round)
+        console.log("Player Score: " + playerScore + " | Computer Score: " + compScore);
+    }    
+}
+
+
 
 let compChoice = getComputerChoice();
 console.log("comp choice: " + compChoice);
 let playerChoice = getPlayerChoice();
-
-playRound(playerChoice, compChoice);
 
 console.log("player Score: " + playerScore);
 console.log("Computer Score: " + compScore);
