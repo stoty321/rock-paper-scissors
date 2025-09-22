@@ -20,5 +20,8 @@ function getPlayerChoice(){
     return choiceValue;
 }
 
+let playerScore = 0;
+let compScore = 0;
+
 let compChoice = getComputerChoice();
 let playerChoice = getPlayerChoice();
