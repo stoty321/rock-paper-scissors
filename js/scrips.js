@@ -63,7 +63,7 @@ function playRound(playerChoice, compChoice){
 function playGame(){
     let playerScore = 0;
     let compScore = 0;
-    let round = 0;
+    let round = 1;
 
     for (round; round <=5; round++){
 
