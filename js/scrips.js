@@ -20,8 +20,50 @@ function getPlayerChoice(){
     return choiceValue;
 }
 
+function playRound(playerChoice, compChoice){
+    playerChoice = playerChoice.toLowerCase();
+
+    if (playerChoice == "rock"){
+        
+        switch(compChoice){
+            case "paper":
+                compScore += 1;
+                break;
+            case "scissors":
+                playerScore += 1;             
+        }
+    }
+    else if(playerChoice == "paper"){
+
+        switch(compChoice){
+            case "rock":
+                playerScore += 1;
+                break;
+            case "scissors":
+                compScore +=1;
+        }
+    }
+    else if(playerChoice == "scissors"){
+
+        switch(compChoice){
+            case "rock":
+                compScore += 1;
+                break;
+            case "paper":
+                playerScore += 1;
+        }
+    }
+    
+}
+
 let playerScore = 0;
 let compScore = 0;
 
 let compChoice = getComputerChoice();
+console.log("comp choice: " + compChoice);
 let playerChoice = getPlayerChoice();
+
+playRound(playerChoice, compChoice);
+
+console.log("player Score: " + playerScore);
+console.log("Computer Score: " + compScore);
