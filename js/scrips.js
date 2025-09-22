@@ -21,38 +21,42 @@ function getPlayerChoice(){
 }
 
 function playRound(playerChoice, compChoice){
+
     playerChoice = playerChoice.toLowerCase();
+    let resultCode = 0; // 0 = Draw | 1 = player loss | 2 = player win
 
     if (playerChoice == "rock"){
         
         switch(compChoice){
             case "paper":
-                compScore += 1;
+                resultCode = 1;
                 break;
             case "scissors":
-                playerScore += 1;             
+                resultCode = 2;             
         }
     }
     else if(playerChoice == "paper"){
 
         switch(compChoice){
-            case "rock":
-                playerScore += 1;
-                break;
             case "scissors":
-                compScore +=1;
+                resultCode = 1;
+                break;
+            case "rock":
+                resultCode = 2;
         }
     }
     else if(playerChoice == "scissors"){
 
         switch(compChoice){
             case "rock":
-                compScore += 1;
+                resultCode = 1;
                 break;
             case "paper":
-                playerScore += 1;
+                resultCode = 2;               
         }
     }
+
+    return resultCode;
     
 }
 
@@ -67,12 +71,20 @@ function playGame(){
         console.log("comp choice: " + compChoice);
         let playerChoice = getPlayerChoice();
         
-        let playerWins = playRound(playerChoice, compChoice);
+        let resultCode = playRound(playerChoice, compChoice);
 
-        if(playerWins == "true"){
-            playerScore += 1;
-        }else{
-            compScore += 1;
+        switch(resultCode){
+            case 0:
+                console.log("Its a Draw");
+                break;
+            case 1:
+                console.log("Player Loses");
+                compScore++;
+                break;
+            case 2:
+                console.log("Player Wins");
+                playerScore++;
+                break;
         }
         
         console.log("Round: " + round)
