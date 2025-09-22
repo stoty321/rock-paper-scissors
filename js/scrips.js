@@ -15,4 +15,10 @@ function getComputerChoice(){
     return choice;
 }
 
+function getPlayerChoice(){
+    let choiceValue = prompt("Enter 'rock', 'papper', or 'scissors'");
+    return choiceValue;
+}
+
 let compChoice = getComputerChoice();
+let playerChoice = getPlayerChoice();
