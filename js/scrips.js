@@ -62,9 +62,13 @@ function playGame(){
     let round = 0;
 
     for (round; round <=5; round++){
+
+        let compChoice = getComputerChoice();
+        console.log("comp choice: " + compChoice);
+        let playerChoice = getPlayerChoice();
         
         let playerWins = playRound(playerChoice, compChoice);
-        
+
         if(playerWins == "true"){
             playerScore += 1;
         }else{
@@ -76,11 +80,4 @@ function playGame(){
     }    
 }
 
-
-
-let compChoice = getComputerChoice();
-console.log("comp choice: " + compChoice);
-let playerChoice = getPlayerChoice();
-
-console.log("player Score: " + playerScore);
-console.log("Computer Score: " + compScore);
+playGame();
