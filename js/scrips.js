@@ -73,7 +73,19 @@ function playGame(){
 
         console.log("Round: " + round)
 
-        roundResult(resultCode);
+        switch(resultCode){
+            case 0:
+                console.log("Its a Draw");
+                break;
+            case 1:
+                console.log("Player Loses");
+                compScore++;
+                break;
+            case 2:
+                console.log("Player Wins");
+                playerScore++;
+                break;
+        }
 
         console.log("Player Score: " + playerScore + " | Computer Score: " + compScore);
         console.log("_____________________________________");
@@ -92,24 +104,6 @@ function gameWinner(playerScore, compScore){
     }else{
         console.log("So close. It's a Draw");
     }
-}
-
-function roundResult(resultCode){
-
-            switch(resultCode){
-            case 0:
-                console.log("Its a Draw");
-                break;
-            case 1:
-                console.log("Player Loses");
-                compScore++;
-                break;
-            case 2:
-                console.log("Player Wins");
-                playerScore++;
-                break;
-        }
-
 }
 
 playGame();
