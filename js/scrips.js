@@ -68,10 +68,10 @@ function playGame(){
     for (round; round <=5; round++){
 
         let compChoice = getComputerChoice();
-        console.log("comp choice: " + compChoice);
         let playerChoice = getPlayerChoice();
-        
         let resultCode = playRound(playerChoice, compChoice);
+
+        console.log("Round: " + round)
 
         switch(resultCode){
             case 0:
@@ -86,10 +86,19 @@ function playGame(){
                 playerScore++;
                 break;
         }
-        
-        console.log("Round: " + round)
+
         console.log("Player Score: " + playerScore + " | Computer Score: " + compScore);
-    }    
+        console.log("_____________________________________")
+    }
+    
+    if(playerScore > compScore){
+        console.log("Congratulations you Won the Game" + playerScore + "-" + compScore);
+    }
+    else if(playerScore < compScore){
+        console.log("Better luck next time. The computer won");
+    }else{
+        console.log("So close. It's a Draw");
+    }
 }
 
 playGame();
