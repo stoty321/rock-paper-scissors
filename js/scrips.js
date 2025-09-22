@@ -1,14 +1,14 @@
 function getComputerChoice(){
-    let choiceValue = Math.floor(Math.random() * 100); //assigns choiceValue with a random number between 0 and 99
+    let choiceValue = Math.floor(Math.random() * 3);
     let choice = " ";
 
-    if(choiceValue < 33){
+    if(choiceValue == 1){
         choice = "rock";
     }
-    else if(choiceValue > 66){
+    else if(choiceValue == 2){
         choice = "paper";
     }
-    else if(choiceValue >= 33 || choiceValue <=66){
+    else if(choiceValue == 3){
         choice = "scissors";
     }
 
