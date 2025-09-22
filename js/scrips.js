@@ -1,5 +1,5 @@
 function getComputerChoice(){
-    let choiceValue = Math.floor(Math.random() * 100);
+    let choiceValue = Math.floor(Math.random() * 100); //assigns choiceValue with a random number between 0 and 99
     let choice = " ";
 
     if(choiceValue < 33){
