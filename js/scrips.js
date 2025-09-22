@@ -2,16 +2,16 @@ function getComputerChoice(){
     let choiceValue = Math.floor(Math.random() * 3);
     let choice = " ";
 
-    if(choiceValue == 1){
+    if(choiceValue == 0){
         choice = "rock";
     }
-    else if(choiceValue == 2){
+    else if(choiceValue == 1){
         choice = "paper";
     }
-    else if(choiceValue == 3){
+    else if(choiceValue == 2){
         choice = "scissors";
     }
-
+    
     return choice;
 }
 
