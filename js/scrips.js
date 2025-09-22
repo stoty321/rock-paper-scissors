@@ -90,6 +90,11 @@ function playGame(){
         console.log("Player Score: " + playerScore + " | Computer Score: " + compScore);
         console.log("_____________________________________")
     }
+
+    gameWinner(playerScore, compScore);
+}
+
+function gameWinner(playerScore, compScore){
     
     if(playerScore > compScore){
         console.log("Congratulations you Won the Game" + playerScore + "-" + compScore);
