@@ -1,3 +1,8 @@
+const Score = {
+    player: 0,
+    computer: 0,
+};
+
 function getComputerChoice() {
     let choiceValue = Math.floor(Math.random() * 3);
     let choice = " ";
@@ -56,10 +61,9 @@ function playRound(playerChoice, compChoice) {
 }
 
 function playGame(playerChoice) {
-    let playerScore = 0;
-    let compScore = 0;
 
     const txtResult = document.querySelector(".txtResult");
+    const txtScore = document.querySelector(".txtScore");
 
     let compChoice = getComputerChoice();
     let resultCode = playRound(playerChoice, compChoice);
@@ -70,32 +74,33 @@ function playGame(playerChoice) {
             break;
         case 1:
             txtResult.textContent = "Player Loses";
-            compScore++;
+            Score.computer++;
             break;
         case 2:
             txtResult.textContent = "Player Wins";
-            playerScore++;
+            Score.player++;
             break;
     }
 
-    //page.appendChild(txtResult);
+    txtScore.textContent = `Player Score: ${Score.player} | Computer Score: ${Score.computer}`;
 
-    gameWinner(playerScore, compScore);
+    gameWinner();
 }
 
-function gameWinner(playerScore, compScore) {
+function gameWinner() {
 
-    if (playerScore > compScore) {
-        console.log("Congratulations. You Won the Game: " + playerScore + "-" + compScore);
+    if (Score.player > Score.computer) {
+        console.log("Congratulations. You Won the Game: " + Score.player + "-" + Score.computer);
     }
-    else if (playerScore < compScore) {
-        console.log("Better luck next time. You lost the Game: " + playerScore + "-" + compScore);
+    else if (Score.player < Score.computer) {
+        console.log("Better luck next time. You lost the Game: " + Score.player + "-" + Score.computer);
     } else {
         console.log("So close. It's a Draw");
     }
 }
 
 function displayGame() {
+
     const btnRock = document.createElement("button");
     const btnPaper = document.createElement("button");
     const btnScissors = document.createElement("button");
@@ -127,7 +132,7 @@ function displayGame() {
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             let playerChoice = button.textContent;
-            console.log(playerChoice);
+    
             playGame(playerChoice);
         });
     });
