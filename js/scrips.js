@@ -70,32 +70,36 @@ function playGame(playerChoice) {
 
     switch (resultCode) {
         case 0:
-            txtResult.textContent = "Its a Draw";
+            txtResult.textContent = "This round is a Draw";
             break;
         case 1:
-            txtResult.textContent = "Player Loses";
+            txtResult.textContent = "You lost this round";
             Score.computer++;
             break;
         case 2:
-            txtResult.textContent = "Player Wins";
+            txtResult.textContent = "You won this round";
             Score.player++;
             break;
     }
 
     txtScore.textContent = `Player Score: ${Score.player} | Computer Score: ${Score.computer}`;
-
-    gameWinner();
+    
+    if (Score.player === 5 || Score.computer === 5){
+        gameWinner();
+    }
+    
 }
 
 function gameWinner() {
+    txtWinner = document.querySelector(".txtWinner");
 
     if (Score.player > Score.computer) {
-        console.log("Congratulations. You Won the Game: " + Score.player + "-" + Score.computer);
+        txtWinner.textContent = "Congratulations. You Won the Game!";
     }
     else if (Score.player < Score.computer) {
-        console.log("Better luck next time. You lost the Game: " + Score.player + "-" + Score.computer);
+        txtWinner.textContent = "Better luck next time. You lost the Game";
     } else {
-        console.log("So close. It's a Draw");
+        txtWinner.textContent = "So close. It's a Draw";
     }
 }
 
@@ -114,6 +118,9 @@ function displayGame() {
     const txtScore = document.createElement("p");
     txtScore.classList.add("txtScore");
 
+    const txtWinner = document.createElement("p");
+    txtWinner.classList.add("txtWinner");
+
     page.appendChild(btnRock);
     btnRock.textContent = "Rock";
     page.appendChild(btnPaper);
@@ -125,6 +132,7 @@ function displayGame() {
     txtResult.textContent = `Choose Rock, Paper or Scissors`;
     containResults.appendChild(txtScore)
     txtScore.textContent = `Player Score: 0 | Computer Score: 0`;
+    containResults.appendChild(txtWinner);
     page.appendChild(containResults);
 
     const buttons = document.querySelectorAll("button");
