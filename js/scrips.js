@@ -64,6 +64,7 @@ function playGame(playerChoice){
     let playerScore = 0;
     let compScore = 0;
     
+    const txtResult = document.createElement("p");
 
     let compChoice = getComputerChoice();
     let resultCode = playRound(playerChoice, compChoice);
@@ -81,6 +82,9 @@ function playGame(playerChoice){
             playerScore++;
             break;
     }
+
+ 
+    //page.appendChild(txtResult);
 
 
     gameWinner(playerScore, compScore);
@@ -116,15 +120,23 @@ function displayGame(){
     
     containResults.appendChild(txtScore)
     page.appendChild(containResults);
-    
-    btnRock.addEventListener("click", () => playGame());
-    btnPaper.addEventListener("click", () => playGame());
-    btnScissors.addEventListener("click", () => playGame()); 
 
-    const txtResult = document.createElement("p");
-    page.appendChild(txtResult);
+
+    txtScore.textContent = `Player Score: 0 | Computer Score: 0`;
+
+    const buttons = document.querySelectorAll("button");
     
-    txtScore.textContent = `Player Score: 0 | Computer Score: 0`
+
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            let playerChoice = button.textContent;
+            console.log(playerChoice);
+            playGame(playerChoice);
+        });
+    });
+
+
 }
 
 displayGame();
