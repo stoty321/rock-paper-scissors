@@ -64,10 +64,13 @@ function playGame(playerChoice){
     let playerScore = 0;
     let compScore = 0;
     
-    const txtResult = document.createElement("p");
+    const txtResult = document.querySelector(".txtResult");
+    
 
     let compChoice = getComputerChoice();
     let resultCode = playRound(playerChoice, compChoice);
+
+
 
     switch (resultCode) {
         case 0:
@@ -109,7 +112,14 @@ function displayGame(){
     const page = document.querySelector("body");
 
     const containResults = document.createElement("div");
+
+    const txtResult = document.createElement("p");
+    txtResult.classList.add("txtResult");
+
     const txtScore = document.createElement("p");
+    txtScore.classList.add("txtScore");
+
+    
 
     page.appendChild(btnRock);
     btnRock.textContent = "Rock";
@@ -118,16 +128,17 @@ function displayGame(){
     page.appendChild(btnScissors);
     btnScissors.textContent = "Scissors";
     
+    containResults.appendChild(txtResult)
+    txtResult.textContent = `Choose Rock, Paper or Scissors`;
     containResults.appendChild(txtScore)
+    txtScore.textContent = `Player Score: 0 | Computer Score: 0`;
     page.appendChild(containResults);
 
 
-    txtScore.textContent = `Player Score: 0 | Computer Score: 0`;
+    
 
     const buttons = document.querySelectorAll("button");
     
-
-
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             let playerChoice = button.textContent;
@@ -135,8 +146,6 @@ function displayGame(){
             playGame(playerChoice);
         });
     });
-
-
 }
 
 displayGame();
