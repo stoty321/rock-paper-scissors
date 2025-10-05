@@ -66,11 +66,8 @@ function playGame(playerChoice){
     
     const txtResult = document.querySelector(".txtResult");
     
-
     let compChoice = getComputerChoice();
     let resultCode = playRound(playerChoice, compChoice);
-
-
 
     switch (resultCode) {
         case 0:
@@ -118,8 +115,6 @@ function displayGame(){
 
     const txtScore = document.createElement("p");
     txtScore.classList.add("txtScore");
-
-    
 
     page.appendChild(btnRock);
     btnRock.textContent = "Rock";
