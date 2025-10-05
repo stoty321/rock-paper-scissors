@@ -65,7 +65,39 @@ function playGame(){
     let compScore = 0;
     let resultCode = 0;
 
+    let compChoice = getComputerChoice();
+
+    switch (resultCode) {
+        case 0:
+            txtResult.textContent = "Its a Draw";
+            break;
+        case 1:
+            txtResult.textContent = "Player Loses";
+            compScore++;
+            break;
+        case 2:
+            txtResult.textContent = "Player Wins";
+            playerScore++;
+            break;
+    }
+
+
+    gameWinner(playerScore, compScore);
+}
+
+function gameWinner(playerScore, compScore){
     
+    if(playerScore > compScore){
+        console.log("Congratulations. You Won the Game: " + playerScore + "-" + compScore);
+    }
+    else if(playerScore < compScore){
+        console.log("Better luck next time. You lost the Game: " + playerScore + "-" + compScore);
+    }else{
+        console.log("So close. It's a Draw");
+    }
+}
+
+function displayGame(){
     const btnRock = document.createElement("button");
     const btnPaper = document.createElement("button");
     const btnScissors = document.createElement("button");
@@ -84,43 +116,14 @@ function playGame(){
     containResults.appendChild(txtScore)
     page.appendChild(containResults);
 
-    let compChoice = getComputerChoice();
-
-    resultCode = btnRock.addEventListener("click", () => playRound("rock", compChoice));
-    resultCode = btnPaper.addEventListener("click", () => playRound("paper", compChoice));
-    resultCode = btnScissors.addEventListener("click", () => playRound("scissors", compChoice));  
+    btnRock.addEventListener("click", () => playGame());
+    btnPaper.addEventListener("click", () => playGame());
+    btnScissors.addEventListener("click", () => playGame()); 
 
     const txtResult = document.createElement("p");
     page.appendChild(txtResult);
-
-    switch (resultCode) {
-        case 0:
-            txtResult.textContent = "Its a Draw";
-            break;
-        case 1:
-            txtResult.textContent = "Player Loses";
-            compScore++;
-            break;
-        case 2:
-            txtResult.textContent = "Player Wins";
-            playerScore++;
-            break;
-    }
     
-    txtScore.textContent = `Player Score: ${playerScore} | Computer Score: ${compScore}`
-    gameWinner(playerScore, compScore);
+    txtScore.textContent = `Player Score: 0 | Computer Score: 0`
 }
 
-function gameWinner(playerScore, compScore){
-    
-    if(playerScore > compScore){
-        console.log("Congratulations. You Won the Game: " + playerScore + "-" + compScore);
-    }
-    else if(playerScore < compScore){
-        console.log("Better luck next time. You lost the Game: " + playerScore + "-" + compScore);
-    }else{
-        console.log("So close. It's a Draw");
-    }
-}
-
-playGame();
+displayGame();
