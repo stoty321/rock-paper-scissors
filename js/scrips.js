@@ -63,34 +63,51 @@ function playRound(playerChoice, compChoice){
 function playGame(){
     let playerScore = 0;
     let compScore = 0;
-    let round = 1;
+    let resultCode = 0;
 
-    for (round; round <=5; round++){
+    
+    const btnRock = document.createElement("button");
+    const btnPaper = document.createElement("button");
+    const btnScissors = document.createElement("button");
+    const page = document.querySelector("body");
 
-        let compChoice = getComputerChoice();
-        let playerChoice = getPlayerChoice();
-        let resultCode = playRound(playerChoice, compChoice);
+    const containResults = document.createElement("div");
+    const txtScore = document.createElement("p");
 
-        console.log("Round: " + round)
+    page.appendChild(btnRock);
+    btnRock.textContent = "Rock";
+    page.appendChild(btnPaper);
+    btnPaper.textContent = "Paper";
+    page.appendChild(btnScissors);
+    btnScissors.textContent = "Scissors";
+    
+    containResults.appendChild(txtScore)
+    page.appendChild(containResults);
 
-        switch(resultCode){
-            case 0:
-                console.log("Its a Draw");
-                break;
-            case 1:
-                console.log("Player Loses");
-                compScore++;
-                break;
-            case 2:
-                console.log("Player Wins");
-                playerScore++;
-                break;
-        }
+    let compChoice = getComputerChoice();
 
-        console.log("Player Score: " + playerScore + " | Computer Score: " + compScore);
-        console.log("_____________________________________");
+    resultCode = btnRock.addEventListener("click", () => playRound("rock", compChoice));
+    resultCode = btnPaper.addEventListener("click", () => playRound("paper", compChoice));
+    resultCode = btnScissors.addEventListener("click", () => playRound("scissors", compChoice));  
+
+    const txtResult = document.createElement("p");
+    page.appendChild(txtResult);
+
+    switch (resultCode) {
+        case 0:
+            txtResult.textContent = "Its a Draw";
+            break;
+        case 1:
+            txtResult.textContent = "Player Loses";
+            compScore++;
+            break;
+        case 2:
+            txtResult.textContent = "Player Wins";
+            playerScore++;
+            break;
     }
-
+    
+    txtScore.textContent = `Player Score: ${playerScore} | Computer Score: ${compScore}`
     gameWinner(playerScore, compScore);
 }
 
