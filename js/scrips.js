@@ -83,11 +83,11 @@ function playGame(playerChoice) {
     }
 
     txtScore.textContent = `Player Score: ${Score.player} | Computer Score: ${Score.computer}`;
-    
-    if (Score.player === 5 || Score.computer === 5){
+
+    if (Score.player === 5 || Score.computer === 5) {
         gameWinner();
     }
-    
+
 }
 
 function gameWinner() {
@@ -100,8 +100,6 @@ function gameWinner() {
         button.style.display = "none";
     });
 
-    //btnSelection.style.display = "none";
-
     if (Score.player > Score.computer) {
         txtWinner.textContent = "Congratulations. You Won the Game!";
     }
@@ -112,21 +110,21 @@ function gameWinner() {
     }
 
     btnReset.style.display = "inline-block";
-    
+
     btnReset.addEventListener("click", () => ResetGame());
 }
 
-function ResetGame(){
+function ResetGame() {
 
     const txtResult = document.querySelector(".txtResult");
     const txtScore = document.querySelector(".txtScore");
     const txtWinner = document.querySelector(".txtWinner");
     const btnSelection = document.querySelectorAll(".playerSelection");
-    
+
     btnSelection.forEach((button) => {
         button.style.display = "inline-block";
     });
-    
+
     Score.player = 0;
     Score.computer = 0;
 
@@ -163,8 +161,6 @@ function displayGame() {
     btnReset.classList.add("btnReset");
     btnReset.textContent = "Reset";
 
-    
-
     page.appendChild(btnRock);
     btnRock.textContent = "Rock";
     page.appendChild(btnPaper);
@@ -186,7 +182,7 @@ function displayGame() {
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             let playerChoice = button.textContent;
-    
+
             playGame(playerChoice);
         });
     });
