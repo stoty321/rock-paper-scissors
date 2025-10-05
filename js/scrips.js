@@ -91,7 +91,16 @@ function playGame(playerChoice) {
 }
 
 function gameWinner() {
-    txtWinner = document.querySelector(".txtWinner");
+
+    const txtWinner = document.querySelector(".txtWinner");
+    const btnReset = document.querySelector(".btnReset");
+    const btnSelection = document.querySelectorAll(".playerSelection");
+
+    btnSelection.forEach((button) => {
+        button.style.display = "none";
+    });
+
+    //btnSelection.style.display = "none";
 
     if (Score.player > Score.computer) {
         txtWinner.textContent = "Congratulations. You Won the Game!";
@@ -101,13 +110,42 @@ function gameWinner() {
     } else {
         txtWinner.textContent = "So close. It's a Draw";
     }
+
+    btnReset.style.display = "inline-block";
+    
+    btnReset.addEventListener("click", () => ResetGame());
+}
+
+function ResetGame(){
+
+    const txtResult = document.querySelector(".txtResult");
+    const txtScore = document.querySelector(".txtScore");
+    const txtWinner = document.querySelector(".txtWinner");
+    const btnSelection = document.querySelectorAll(".playerSelection");
+    
+    btnSelection.forEach((button) => {
+        button.style.display = "inline-block";
+    });
+    
+    Score.player = 0;
+    Score.computer = 0;
+
+    txtScore.textContent = "Player Score: 0 | Computer Score: 0";
+    txtWinner.textContent = " ";
+    txtResult.textContent = "Choose Rock, Paper or Scissors"
 }
 
 function displayGame() {
 
     const btnRock = document.createElement("button");
+    btnRock.classList.add("playerSelection");
+    btnRock.style.display = "inline-block"
     const btnPaper = document.createElement("button");
+    btnPaper.classList.add("playerSelection");
+    btnPaper.style.display = "inline-block"
     const btnScissors = document.createElement("button");
+    btnScissors.classList.add("playerSelection");
+    btnScissors.style.display = "inline-block"
     const page = document.querySelector("body");
 
     const containResults = document.createElement("div");
@@ -121,6 +159,12 @@ function displayGame() {
     const txtWinner = document.createElement("p");
     txtWinner.classList.add("txtWinner");
 
+    const btnReset = document.createElement("button");
+    btnReset.classList.add("btnReset");
+    btnReset.textContent = "Reset";
+
+    
+
     page.appendChild(btnRock);
     btnRock.textContent = "Rock";
     page.appendChild(btnPaper);
@@ -132,10 +176,12 @@ function displayGame() {
     txtResult.textContent = `Choose Rock, Paper or Scissors`;
     containResults.appendChild(txtScore)
     txtScore.textContent = `Player Score: 0 | Computer Score: 0`;
+    containResults.appendChild(btnReset);
+    btnReset.style.display = "none";
     containResults.appendChild(txtWinner);
     page.appendChild(containResults);
 
-    const buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll(".playerSelection");
 
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
