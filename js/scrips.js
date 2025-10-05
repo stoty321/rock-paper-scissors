@@ -60,12 +60,13 @@ function playRound(playerChoice, compChoice){
     
 }
 
-function playGame(){
+function playGame(playerChoice){
     let playerScore = 0;
     let compScore = 0;
-    let resultCode = 0;
+    
 
     let compChoice = getComputerChoice();
+    let resultCode = playRound(playerChoice, compChoice);
 
     switch (resultCode) {
         case 0:
@@ -115,7 +116,7 @@ function displayGame(){
     
     containResults.appendChild(txtScore)
     page.appendChild(containResults);
-
+    
     btnRock.addEventListener("click", () => playGame());
     btnPaper.addEventListener("click", () => playGame());
     btnScissors.addEventListener("click", () => playGame()); 
