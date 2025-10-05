@@ -15,11 +15,6 @@ function getComputerChoice() {
     return choice;
 }
 
-function getPlayerChoice() {
-    let choiceValue = prompt("Enter 'rock', 'paper', or 'scissors'");
-    return choiceValue;
-}
-
 function playRound(playerChoice, compChoice) {
 
     playerChoice = playerChoice.toLowerCase();
